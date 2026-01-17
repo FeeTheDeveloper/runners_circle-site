@@ -21,32 +21,31 @@ export async function POST(req: NextRequest) {
     }
 
     // Initialize OpenAI client
-    const openai = new OpenAI({
+    const client = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    // Call OpenAI API
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
+    // Call OpenAI API using responses.create
+    const response = await client.responses.create({
+      model: "gpt-4.1-mini",
+      input: [
         {
           role: "system",
-          content: "You are the Runners Circle AI — an elite, execution-focused brand and marketing strategist. You provide sharp, actionable guidance on branding, positioning, messaging, and go-to-market strategy. No fluff. No filler. Just results-driven insights for businesses ready to dominate their market.",
+          content: "You are Runners Circle Branding & Marketing's elite brand strategy assistant. You give direct, premium, execution-focused guidance.",
         },
         {
           role: "user",
           content: message,
         },
       ],
-      max_tokens: 500,
-      temperature: 0.7,
     });
 
-    const assistantMessage = completion.choices[0]?.message?.content || "No response";
+    // Extract assistant reply safely
+    const assistantMessage = response.output_text || "No response";
 
     return NextResponse.json({ reply: assistantMessage });
   } catch (error) {
-    console.error("OpenAI API error:", error);
+    console.error("OpenAI API error:", error instanceof Error ? error.message : error);
     return NextResponse.json(
       { error: "Failed to process request" },
       { status: 500 }
