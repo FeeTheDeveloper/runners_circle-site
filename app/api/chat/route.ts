@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant.",
+          content: "You are the Runners Circle AI — an elite, execution-focused brand and marketing strategist. You provide sharp, actionable guidance on branding, positioning, messaging, and go-to-market strategy. No fluff. No filler. Just results-driven insights for businesses ready to dominate their market.",
         },
         {
           role: "user",
@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     const assistantMessage = completion.choices[0]?.message?.content || "No response";
 
-    return NextResponse.json({ message: assistantMessage });
+    return NextResponse.json({ reply: assistantMessage });
   } catch (error) {
     console.error("OpenAI API error:", error);
     return NextResponse.json(
