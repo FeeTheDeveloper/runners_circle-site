@@ -41,7 +41,7 @@ export default function Home() {
         
         {/* CTA Button */}
         <Link
-          href="/login"
+          href="/chat"
           className="inline-block px-8 sm:px-12 py-4 sm:py-5 text-base sm:text-lg font-semibold rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 min-w-[280px] sm:min-w-[320px]"
           style={{ 
             backgroundColor: '#E6451E',
