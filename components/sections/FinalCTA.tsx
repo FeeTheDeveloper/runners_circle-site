@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Button } from "@/components/ui/primitives";
+import { Container, SectionHeading, Button } from "@/components/ui/primitives";
 import { FadeRise } from "@/components/ui/motion";
 
 export default function FinalCTA() {
@@ -14,9 +14,9 @@ export default function FinalCTA() {
 
       <Container className="relative z-10 text-center">
         <FadeRise>
-          <h2 className="font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl lg:text-5xl text-brand-sand">
-            Ready To Run Circles Around Your Competition?
-          </h2>
+          <SectionHeading
+            title="Ready To Run Circles Around Your Competition?"
+          />
         </FadeRise>
         <FadeRise delay={0.15}>
           <div className="mt-10">

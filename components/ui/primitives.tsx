@@ -19,11 +19,13 @@ export function Container({
 export function SectionHeading({
   title,
   subtitle,
+  children,
   center = true,
   className = "",
 }: {
   title: string;
   subtitle?: string;
+  children?: ReactNode;
   center?: boolean;
   className?: string;
 }) {
@@ -33,27 +35,41 @@ export function SectionHeading({
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-brand-sand/70 sm:text-lg mx-auto">
+        <p className={`mt-4 max-w-2xl text-base leading-relaxed text-brand-sand/70 sm:text-lg ${center ? "mx-auto" : ""}`}>
           {subtitle}
         </p>
       )}
+      {children}
     </div>
   );
 }
 
 /* ─── Button ─── */
+type ButtonBaseProps = {
+  children: ReactNode;
+  variant?: "primary" | "secondary" | "ghost";
+  size?: "sm" | "md" | "lg";
+  className?: string;
+};
+
+type ButtonAsButton = ButtonBaseProps &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonBaseProps> & {
+    href?: undefined;
+  };
+
+type ButtonAsAnchor = ButtonBaseProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> & {
+    href: string;
+  };
+
 export function Button({
   children,
   variant = "primary",
   size = "md",
   className = "",
+  href,
   ...props
-}: {
-  children: ReactNode;
-  variant?: "primary" | "secondary" | "ghost";
-  size?: "sm" | "md" | "lg";
-  className?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+}: ButtonAsButton | ButtonAsAnchor) {
   const base =
     "inline-flex items-center justify-center font-heading font-semibold uppercase tracking-wide rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ember focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black";
 
@@ -70,8 +86,18 @@ export function Button({
     lg: "px-8 py-4 text-base",
   };
 
+  const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if (href) {
+    return (
+      <a className={classes} href={href} {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button className={`${base} ${variants[variant]} ${sizes[size]} ${className}`} {...props}>
+    <button className={classes} {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
       {children}
     </button>
   );

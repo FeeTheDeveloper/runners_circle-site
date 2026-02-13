@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Button } from "@/components/ui/primitives";
+import { Container, SectionHeading, Button } from "@/components/ui/primitives";
 import { FadeRise } from "@/components/ui/motion";
 
 export default function FeaturedAI() {
@@ -16,15 +16,10 @@ export default function FeaturedAI() {
       <div className="relative z-10">
         <Container className="text-center">
           <FadeRise>
-            <h2 className="font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl lg:text-5xl text-brand-sand">
-              AI That Works For Your Business.
-            </h2>
-          </FadeRise>
-          <FadeRise delay={0.12}>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-sand/70 sm:text-lg">
-              Deploy intelligent assistants, automate operations, and create
-              scalable digital workflows that operate 24/7.
-            </p>
+            <SectionHeading
+              title="AI That Works For Your Business."
+              subtitle="Deploy intelligent assistants, automate operations, and create scalable digital workflows that operate 24/7."
+            />
           </FadeRise>
           <FadeRise delay={0.24}>
             <div className="mt-10">

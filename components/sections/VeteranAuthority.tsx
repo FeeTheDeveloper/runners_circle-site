@@ -1,6 +1,6 @@
 "use client";
 
-import { Container, Card } from "@/components/ui/primitives";
+import { Container, SectionHeading, Card } from "@/components/ui/primitives";
 import { FadeRise } from "@/components/ui/motion";
 
 export default function VeteranAuthority() {
@@ -11,21 +11,22 @@ export default function VeteranAuthority() {
           {/* Copy */}
           <div>
             <FadeRise>
-              <h2 className="font-heading text-3xl font-bold uppercase tracking-tight sm:text-4xl lg:text-5xl text-brand-sand mb-6">
-                Mission-Driven. Results-Focused.
-              </h2>
-            </FadeRise>
-            <FadeRise delay={0.12}>
-              <div className="space-y-4 text-base leading-relaxed text-brand-sand/70 sm:text-lg">
-                <p>
-                  Runners Circle Branding &amp; Marketing LLC is a verified 100%
-                  Veteran-Owned Texas business.
-                </p>
-                <p>
-                  We bring military discipline and execution-level focus into
-                  every build.
-                </p>
-              </div>
+              <SectionHeading
+                title="Mission-Driven. Results-Focused."
+                center={false}
+                className="mb-6"
+              >
+                <div className="space-y-4 text-base leading-relaxed text-brand-sand/70 sm:text-lg">
+                  <p>
+                    Runners Circle Branding &amp; Marketing LLC is a verified 100%
+                    Veteran-Owned Texas business.
+                  </p>
+                  <p>
+                    We bring military discipline and execution-level focus into
+                    every build.
+                  </p>
+                </div>
+              </SectionHeading>
             </FadeRise>
           </div>
 

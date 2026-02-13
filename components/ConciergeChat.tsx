@@ -8,6 +8,7 @@ import {
   TIMELINE_OPTIONS,
   validateEmail,
 } from "@/lib/leadTypes";
+import { Button } from "@/components/ui/primitives";
 
 /* ─── Chat message type ─── */
 interface Message {
@@ -270,12 +271,9 @@ export default function ConciergeChat() {
               Our team will review your submission and respond within 24 hours.
             </p>
             {/* Calendar routing button */}
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center font-heading font-semibold uppercase tracking-wide rounded-lg px-6 py-3 text-sm gradient-primary text-white shadow-lg hover:shadow-brand-ember/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 mb-3"
-            >
+            <Button href="/contact" className="mb-3">
               Book a Strategy Call
-            </a>
+            </Button>
             <button
               onClick={resetChat}
               className="text-xs font-heading uppercase tracking-wide text-brand-sand/40 hover:text-brand-sand/70 transition-colors cursor-pointer"
