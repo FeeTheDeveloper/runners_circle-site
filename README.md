@@ -90,19 +90,31 @@ All env vars are configured in **Vercel → Settings → Environment Variables**
 
 > \* Without SMTP vars, the concierge chat still accepts leads — they are logged to the server console instead of emailed.
 
-## Deploy to Vercel
+## Deploy to Vercel (Seamless Setup)
 
-### First deploy
+### Pre-deploy checklist
 
-1. Push this repo to GitHub
-2. Import the repo at [vercel.com/new](https://vercel.com/new)
-3. Framework preset: **Next.js** (auto-detected)
-4. Add environment variables in **Settings → Environment Variables**
-5. Deploy — zero additional build config needed
+Before importing to Vercel, confirm:
+
+- The project builds locally: `npm run build`
+- `.env.local` values match the keys in `.env.example`
+- Required production env vars are ready (especially SMTP + lead receiver email)
+- `NEXT_PUBLIC_SITE_URL` is set to your production domain
+
+### First deploy (recommended flow)
+
+1. Push this repo to GitHub (or GitLab/Bitbucket).
+2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Confirm framework preset is **Next.js** (auto-detected).
+4. In the import screen, add all production environment variables.
+5. Click **Deploy**.
+6. After deploy, open **Project → Settings → Environment Variables** and verify values are present for `Production`, `Preview`, and `Development` as needed.
+7. Trigger a redeploy if you added or changed env vars after the first build.
 
 ### Subsequent deploys
 
-Every push to `main` triggers an automatic production deploy.
+- Every push to `main` triggers an automatic production deploy.
+- Every pull request branch gets a Preview deployment URL.
 
 ### Build settings (auto-detected)
 
@@ -112,6 +124,40 @@ Every push to `main` triggers an automatic production deploy.
 | Output Directory | `.next` |
 | Install Command | `npm install` |
 | Node.js Version | 18.x+ |
+
+### Recommended Vercel project settings
+
+- **Root Directory:** `./` (repo root)
+- **Install Command:** `npm install`
+- **Build Command:** `npm run build`
+- **Output Directory:** `.next`
+- **Node.js:** `18.x` or newer
+
+### Environment variable quick mapping
+
+Add these in **Vercel → Project Settings → Environment Variables**:
+
+- `M365_SMTP_HOST`
+- `M365_SMTP_PORT`
+- `M365_SMTP_USER`
+- `M365_SMTP_PASS`
+- `LEAD_RECEIVER_EMAIL`
+- `NEXT_PUBLIC_SITE_URL`
+
+Tip: If email notifications are not configured yet, lead submissions still work and are logged server-side.
+
+### Common deployment issues
+
+1. **Build passes locally but fails on Vercel**
+   - Ensure Node version is `18.x+`.
+   - Re-check env var names for exact spelling.
+2. **Contact/concierge submits but no emails arrive**
+   - Validate Microsoft 365 SMTP credentials and mailbox permissions.
+   - Confirm `LEAD_RECEIVER_EMAIL` is set.
+3. **Wrong canonical/metadata URLs**
+   - Set `NEXT_PUBLIC_SITE_URL` to the production domain and redeploy.
+4. **Environment variable updates not reflected**
+   - Redeploy after saving env var changes.
 
 ### Custom domain
 
