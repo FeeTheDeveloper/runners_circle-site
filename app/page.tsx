@@ -11,13 +11,13 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import SplashIntro from "@/components/SplashIntro";
 
 export const metadata: Metadata = {
-  title: "Runners Circle Branding & Marketing | Veteran-Owned Digital Agency",
+  title: "AI CRM & Marketing Systems | Runners Circle OS",
   description:
-    "Veteran-owned branding & marketing agency in Dallas, Texas. We build elite digital ecosystems — brand strategy, web development, AI automation, and growth systems.",
+    "We install AI CRM and marketing systems that capture leads, automate follow-up, and grow revenue for growth-focused brands.",
   openGraph: {
-    title: "Runners Circle Branding & Marketing",
+    title: "Runners Circle OS | AI CRM & Marketing Systems",
     description:
-      "Veteran-owned. Texas-built. We build elite digital ecosystems for businesses ready to lead their market.",
+      "Built for Vet Gang companies first and deployed nationwide for brands that need CRM and marketing systems that perform.",
     url: "/",
   },
 };

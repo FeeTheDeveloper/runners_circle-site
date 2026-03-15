@@ -6,11 +6,12 @@ import { Container, Button } from "@/components/ui/primitives";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "AI", href: "#ai" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: "Platform", href: "/os" },
+  { label: "Industries", href: "/industries" },
+  { label: "In-House", href: "/inhouse" },
+  { label: "Concierge", href: "/concierge" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
@@ -19,14 +20,12 @@ export default function Header() {
   return (
     <header className="glass-header fixed top-0 left-0 z-50 w-full">
       <Container className="flex items-center justify-between h-16 md:h-[72px]">
-        {/* Logo / Wordmark */}
         <Link href="/" className="flex items-center gap-2 group">
           <span className="text-xl font-heading font-bold tracking-tight text-brand-sand group-hover:text-brand-ember transition-colors duration-300">
             RUNNERS&nbsp;CIRCLE
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map(({ label, href }) => (
             <Link
@@ -37,12 +36,11 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <Button size="sm" className="ml-4">
-            Start Your Build
+          <Button size="sm" className="ml-4" href="/contact">
+            Get Growth Audit
           </Button>
         </nav>
 
-        {/* Mobile Toggle */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden flex flex-col gap-1.5 p-2 text-brand-sand"
@@ -60,7 +58,6 @@ export default function Header() {
         </button>
       </Container>
 
-      {/* Mobile Nav */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
       >
@@ -75,8 +72,8 @@ export default function Header() {
               {label}
             </Link>
           ))}
-          <Button size="sm" className="mt-2">
-            Start Your Build
+          <Button size="sm" className="mt-2" href="/contact">
+            Get Growth Audit
           </Button>
         </nav>
       </div>
