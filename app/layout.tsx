@@ -24,25 +24,25 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://runnerscirclebrand
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Runners Circle Branding & Marketing",
+    default: "Runners Circle OS",
     template: "%s | Runners Circle",
   },
   description:
-    "Elite brand systems, AI infrastructure, and scalable digital ecosystems for modern businesses. Veteran-owned. Texas-built.",
+    "AI CRM and marketing systems that capture leads, automate follow-up, and grow revenue. Built for Vet Gang companies first.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Runners Circle Branding & Marketing",
-    title: "Runners Circle Branding & Marketing",
+    siteName: "Runners Circle OS",
+    title: "Runners Circle OS",
     description:
-      "Elite brand systems, AI infrastructure, and scalable digital ecosystems for modern businesses. Veteran-owned. Texas-built.",
+      "AI CRM and marketing systems that capture leads, automate follow-up, and grow revenue. Built for Vet Gang companies first.",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Runners Circle Branding & Marketing",
+    title: "Runners Circle OS",
     description:
-      "Elite brand systems, AI infrastructure, and scalable digital ecosystems for modern businesses.",
+      "AI CRM and marketing systems for lead capture, automated follow-up, and measurable growth.",
   },
   robots: {
     index: true,
